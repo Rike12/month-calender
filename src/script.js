@@ -1,14 +1,24 @@
-const monthE1 = document.querySelector(".date h1");
-const fullDateE1 = document.querySelector(".date p");
+// To get the month to display in htag
+const monthE1 = document.querySelector (".date h1");
+// To get the date to display in ptag
+const fullDateE1 = document.querySelector (".date p");
 
+// to get the days element 
 
-const monthInx = new Date().getMonth();
-const lastDay = new Date(new Date().getFullYear(), monthInx + 1, 0).getDate();
-console.log(lastDay);
+const daysE1 = document.querySelector(".days")
+// To get new month
+monthInx = new Date().getMonth();
+
+// to get the last day of the month,
+//the 0 means the last day = 30 or 31
+// monthInx + 1 means the next months
+const lastDay = new Date(new Date().getFullYear(), monthInx + 1, 0);
+
+monthInx = new Date().getMonth();
 
 const months = [
     "January",
-    "February",
+    "Febraury",
     "March",
     "April",
     "May",
@@ -19,9 +29,21 @@ const months = [
     "October",
     "November",
     "December",
-
+    
 ];
 
-monthE1.uinnerHTML = months[monthInx];
-fllDateE1.innerText = new Date ().toDateString();
+// to let the month to show in h1
+monthE1.innerText = months[monthInx];
 
+// for th date to display in ptag
+fullDateE1.innerText = new Date ().toDateString();
+
+
+//to get the dates of months dynamically
+
+let days = "";
+for (let i=1; i <= lastDay; i++){
+days += `<div>${i}</div>`
+}
+
+daysE1.innerHTML = days;
