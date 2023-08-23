@@ -7,14 +7,15 @@ const fullDateE1 = document.querySelector (".date p");
 
 const daysE1 = document.querySelector(".days")
 // To get new month
-monthInx = new Date().getMonth();
+const monthInx = new Date().getMonth();
 
 // to get the last day of the month,
 //the 0 means the last day = 30 or 31
 // monthInx + 1 means the next months
-const lastDay = new Date(new Date().getFullYear(), monthInx + 1, 0);
+const lastDay = new Date(new Date().getFullYear(), monthInx + 1, 0).getDate();
+const firstDay = new Date(new Date().getFullYear(), monthInx + 1).getDate();
 
-monthInx = new Date().getMonth();
+
 
 const months = [
     "January",
@@ -42,8 +43,17 @@ fullDateE1.innerText = new Date ().toDateString();
 //to get the dates of months dynamically
 
 let days = "";
-for (let i=1; i <= lastDay; i++){
-days += `<div>${i}</div>`
+
+//To get the two empty days
+for(let i = firstDay; i > 0; i--) {
+    days += `<div class="empty"></div>`;
+}
+for (let i = 1; i <= lastDay; i++){
+if (i === new Date().getDate()){
+    days += `<div class="today">${i}</div>`;
+} else{
+    days += `<div>${i}</div>`;
+}
 }
 
 daysE1.innerHTML = days;
