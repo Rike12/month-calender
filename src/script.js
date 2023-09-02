@@ -13,7 +13,7 @@ const monthInx = new Date().getMonth();
 //the 0 means the last day = 30 or 31
 // monthInx + 1 means the next months
 const lastDay = new Date(new Date().getFullYear(), monthInx + 1, 0).getDate();
-const firstDay = new Date(new Date().getFullYear(), monthInx + 1).getDate();
+const firstDay = new Date(new Date().getFullYear(), monthInx, 1).getDay() - 1;
 
 
 
